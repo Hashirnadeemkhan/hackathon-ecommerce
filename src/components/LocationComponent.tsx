@@ -1,6 +1,6 @@
 export default function PickUpSection() {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md">
+      <div className="bg-white p-6 rounded-lg ">
         {/* Title */}
         <div className="flex items-center mb-4">
           <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>

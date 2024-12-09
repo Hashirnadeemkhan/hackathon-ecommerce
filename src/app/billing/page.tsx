@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import bluemercedes from "/public/bluemercedes.png"; // Update path if needed
 import PaymentForm from "@/components/Payment";
+import Link from "next/link";
 
 const RentalForm = () => {
   return (
@@ -167,9 +168,11 @@ const RentalForm = () => {
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 mt-1"
               />
             </label>
+            <Link href={"/dashboard"}>
             <button className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold">
               Apply now
             </button>
+            </Link>
           </div>
           <div className="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center">
             <p className="font-semibold text-lg">Total Rental Price</p>
@@ -177,8 +180,8 @@ const RentalForm = () => {
           </div>
           <p className="text-sm text-gray-500">Overall price includes rental discount</p>
         </div>
-      <PaymentForm/>
       </div>
+      <PaymentForm/>
     </div>
   );
 };

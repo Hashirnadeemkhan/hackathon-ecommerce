@@ -1,17 +1,17 @@
-'use client'
-import Link from 'next/link'
-import { useState } from 'react'
-import Image from 'next/image'
-import { Shield } from 'lucide-react'
-import visa from "/public/visa.png"
-import paypal from "/public/paypal.png"
-import bitcoin from "/public/Bitcoin.png"
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+import Image from 'next/image';
+import { Shield } from 'lucide-react';
+import visa from '/public/visa.png';
+import paypal from '/public/paypal.png';
+import bitcoin from '/public/Bitcoin.png';
 
 export default function PaymentForm() {
-  const [selectedMethod, setSelectedMethod] = useState('credit-card')
+  const [selectedMethod, setSelectedMethod] = useState('credit-card');
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-8">
+    <div className="max-w-5xl mt-5 p-6 space-y-8 bg-white shadow-md rounded-lg">
       {/* Payment Method Section */}
       <div className="space-y-4">
         <div className="flex justify-between items-center">
@@ -22,7 +22,7 @@ export default function PaymentForm() {
           <span className="text-sm text-gray-500">Step 3 of 4</span>
         </div>
 
-        <div className="bg-gray-50 p-6 rounded-xl space-y-6">
+        <div className="bg-white p-6 rounded-xl border shadow-sm space-y-6">
           {/* Credit Card Option */}
           <div className="flex items-center justify-between">
             <label className="flex items-center space-x-3">
@@ -32,7 +32,7 @@ export default function PaymentForm() {
                 value="credit-card"
                 checked={selectedMethod === 'credit-card'}
                 onChange={(e) => setSelectedMethod(e.target.value)}
-                className="w-4 h-4 text-blue-600"
+                className="w-4 h-4 text-blue-600 focus:ring focus:ring-blue-300"
               />
               <span className="text-sm font-medium">Credit Card</span>
             </label>
@@ -42,21 +42,21 @@ export default function PaymentForm() {
           </div>
 
           {selectedMethod === 'credit-card' && (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="col-span-2">
                 <label className="block text-sm font-medium text-gray-700">Card Number</label>
                 <input
                   type="text"
                   placeholder="Card number"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-300"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Expiration Date</label>
                 <input
                   type="text"
-                  placeholder="DD/MM/YY"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  placeholder="MM/YY"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-300"
                 />
               </div>
               <div>
@@ -64,7 +64,7 @@ export default function PaymentForm() {
                 <input
                   type="text"
                   placeholder="CVC"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-300"
                 />
               </div>
               <div className="col-span-2">
@@ -72,7 +72,7 @@ export default function PaymentForm() {
                 <input
                   type="text"
                   placeholder="Card holder"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-300"
                 />
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function PaymentForm() {
                 value="paypal"
                 checked={selectedMethod === 'paypal'}
                 onChange={(e) => setSelectedMethod(e.target.value)}
-                className="w-4 h-4 text-blue-600"
+                className="w-4 h-4 text-blue-600 focus:ring focus:ring-blue-300"
               />
               <span className="text-sm font-medium">PayPal</span>
             </label>
@@ -103,7 +103,7 @@ export default function PaymentForm() {
                 value="bitcoin"
                 checked={selectedMethod === 'bitcoin'}
                 onChange={(e) => setSelectedMethod(e.target.value)}
-                className="w-4 h-4 text-blue-600"
+                className="w-4 h-4 text-blue-600 focus:ring focus:ring-blue-300"
               />
               <span className="text-sm font-medium">Bitcoin</span>
             </label>
@@ -122,21 +122,21 @@ export default function PaymentForm() {
           <span className="text-sm text-gray-500">Step 4 of 4</span>
         </div>
 
-        <div className="bg-gray-50 p-6 rounded-xl space-y-4">
+        <div className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
           <label className="flex items-start space-x-3">
             <input
               type="checkbox"
-              className="mt-1 w-4 h-4 text-blue-600 rounded"
+              className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring focus:ring-blue-300"
             />
             <span className="text-sm text-gray-600">
-              I agree with sending an Marketing and newsletter emails. No spam, promised!
+              I agree with sending marketing and newsletter emails. No spam, promised!
             </span>
           </label>
 
           <label className="flex items-start space-x-3">
             <input
               type="checkbox"
-              className="mt-1 w-4 h-4 text-blue-600 rounded"
+              className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring focus:ring-blue-300"
             />
             <span className="text-sm text-gray-600">
               I agree with our terms and conditions and privacy policy.
@@ -146,8 +146,8 @@ export default function PaymentForm() {
       </div>
 
       {/* Rent Now Button */}
-      <Link href={"/dashboard"}>
-        <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+      <Link href="/dashboard">
+        <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition mt-5">
           Rent Now
         </button>
       </Link>
@@ -155,11 +155,11 @@ export default function PaymentForm() {
       {/* Security Message */}
       <div className="flex items-center space-x-2 text-gray-500">
         <Shield className="w-5 h-5" />
-        <div className="space-y-1">
+        <div>
           <p className="text-sm font-medium">All your data are safe</p>
           <p className="text-xs">We are using the most advanced security to provide you the best experience ever.</p>
         </div>
       </div>
     </div>
-  )
+  );
 }
