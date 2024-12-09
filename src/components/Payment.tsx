@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Shield } from 'lucide-react';
-import visa from '/public/visa.png';
-import paypal from '/public/paypal.png';
+import visa from '/public/Visa.png';
+import paypal from '/public/PayPal.png';
 import bitcoin from '/public/Bitcoin.png';
 
 export default function PaymentForm() {

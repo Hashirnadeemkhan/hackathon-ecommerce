@@ -9,7 +9,7 @@ import brownswift from "/public/brownswift.png"
 import rollsroyce from "/public/rollsroyce.png"
 import greyswift from "/public/greyswift.png"
 import heroGray from "/public/heroGray.png"
-import brightwhite from "/public/brightwhite.png"
+
 import ProductCard from "@/components/ProductCard"; // Assuming your ProductCard component is in the same directory
 export default function Filters() {
     const cars = [

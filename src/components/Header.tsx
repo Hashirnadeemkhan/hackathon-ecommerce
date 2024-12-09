@@ -4,7 +4,7 @@ import { TbBellFilled } from "react-icons/tb";
 import { IoMdSettings } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import Image from "next/image";
-import profile from "/public/profile.png"
+import Profile from "/public/Profile.png"
 const Header = () => {
   return (
     <header className="flex justify-between items-center px-4 lg:px-20 py-4 bg-white shadow-md">
@@ -42,7 +42,7 @@ const Header = () => {
         
         <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden">
           <Image
-            src={profile}
+            src={Profile}
             alt="User"
             className="w-full h-full object-cover"
           />

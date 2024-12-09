@@ -9,7 +9,7 @@ import brownswift from "/public/brownswift.png";
 import rollsroyce from "/public/rollsroyce.png";
 import greyswift from "/public/greyswift.png";
 import heroGray from "/public/heroGray.png";
-import view from "/public/view.png";
+import view from "/public/View.png";
 import bluemercedes from "/public/bluemercedes.png";
 import interior from "/public/interior.png";
 import seats from "/public/seats.png";
@@ -182,8 +182,8 @@ const CarRentalComponent = () => {
                 <span className="ml-2 text-gray-500 text-sm">440+ Reviews</span>
               </div>
               <p className="text-gray-600 text-lg mb-4">
-                NISMO has become the embodiment of Nissan's outstanding performance, inspired
-                by the most unforgiving proving ground, the "race track".
+                {`NISMO has become the embodiment of Nissan's outstanding performance, inspired
+                by the most unforgiving proving ground, the "race track".`}
               </p>
               <div className="grid grid-cols-2 gap-4 text-lg mb-6">
                 <p>
