@@ -12,7 +12,7 @@ type Specs = {
 
 // Define the type for the ProductCard props
 type ProductCardProps = {
-  image: string | StaticImageData;  // Assuming image is a URL string
+  image: string | StaticImageData;  //A type used when the image is imported directly from a file
   name: string;
   type: string;
   specs: Specs;

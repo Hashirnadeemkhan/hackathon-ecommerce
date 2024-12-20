@@ -130,7 +130,7 @@ const CarGrid: React.FC = () => {
     <div className="p-4 lg:px-20">
       <div className="flex justify-between">
       <h2 className="text-xl font-semibold mb-4">Popular Cars</h2>
-      <h2 className="text-xl font-semibold mb-4">View All</h2>
+      <h2 className="text-xl font-semibold mb-4 hover:underline">View All</h2>
 
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -150,7 +150,7 @@ const CarGrid: React.FC = () => {
             
       </div>
       <div className="flex justify-center items-center mt-16 relative mb-10">
-   <Link href={"/categories"}><button className="bg-[#3563E9] tracking-widest px-5  p-2 rounded-lg text-white lg:text-lg text-sm">Showmorecar</button></Link> 
+   <Link href={"/categories"}><button className="bg-[#3563E9] hover:bg-blue-700 tracking-widest px-5  p-2 rounded-lg text-white lg:text-lg text-sm">Showmorecar</button></Link> 
     <span className="absolute right-0 text-gray-500 text-lg">120 Car</span>
       </div>
     </div>

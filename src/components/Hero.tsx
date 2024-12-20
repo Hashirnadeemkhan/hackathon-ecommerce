@@ -25,6 +25,7 @@ const Hero = () => {
             <Image src={heroWhite} objectFit="contain" alt="Hero Car" />
           </div>
         </div>
+        
 
         {/* Right Card */}
         <div className="bg-blue-400 p-6 rounded-lg hidden lg:block">
