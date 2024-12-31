@@ -1,6 +1,5 @@
 // components/Filters.jsx
 
-
 import whiteswift from "/public/whiteswift.png"
 import blackswift from "/public/blackswift.png"
 import blueswift from "/public/blueswift.png"

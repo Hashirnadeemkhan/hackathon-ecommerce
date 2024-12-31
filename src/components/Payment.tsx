@@ -146,7 +146,7 @@ export default function PaymentForm() {
       </div>
 
       {/* Rent Now Button */}
-      <Link href="/dashboard">
+      <Link href="/pages/dashboard">
         <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition mt-5">
           Rent Now
         </button>

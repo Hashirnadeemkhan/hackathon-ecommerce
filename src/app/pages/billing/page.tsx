@@ -17,34 +17,34 @@ const RentalForm = () => {
             <p className="text-sm text-gray-500 mb-4">Please enter your billing information</p>
             <div className="grid md:grid-cols-2 gap-4">
               <label className="block">
-                <span className="text-sm text-gray-600">Your Name</span>
+                <span className="text-sm text-gray-600 font-semibold">Name</span>
                 <input
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Your name"
                   className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 mt-1"
                 />
               </label>
               <label className="block">
-                <span className="text-sm text-gray-600">Phone Number</span>
+                <span className="text-sm text-gray-600 font-semibold">Phone Number</span>
                 <input
                   type="text"
-                  placeholder="123-456-7890"
+                  placeholder="Phone Number"
                   className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 mt-1"
                 />
               </label>
               <label className="block">
-                <span className="text-sm text-gray-600">Address</span>
+                <span className="text-sm text-gray-600 font-semibold">Address</span>
                 <input
                   type="text"
-                  placeholder="123 Main St"
+                  placeholder="Address"
                   className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 mt-1"
                 />
               </label>
               <label className="block">
-                <span className="text-sm text-gray-600">Town / City</span>
+                <span className="text-sm text-gray-600 font-bold">Town / City</span>
                 <input
                   type="text"
-                  placeholder="Los Angeles"
+                  placeholder="Town or city"
                   className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 mt-1"
                 />
               </label>
@@ -168,8 +168,8 @@ const RentalForm = () => {
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 mt-1"
               />
             </label>
-            <Link href={"/dashboard"}>
-            <button className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold">
+            <Link href={"/pages/dashboard"}>
+            <button className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold">
               Apply now
             </button>
             </Link>

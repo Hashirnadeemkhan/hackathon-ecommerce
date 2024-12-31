@@ -203,7 +203,7 @@ const CarRentalComponent = () => {
                 <div className="text-2xl font-bold text-gray-800 mb-4 lg:mb-0">
                   $80.00<span className="text-gray-500 line-through ml-2">$100.00</span>/day
                 </div>
-                <Link href={"/billing"}>
+                <Link href={"/pages/billing"}>
                 <button className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">
                   Rent Now
                 </button>

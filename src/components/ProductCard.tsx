@@ -2,6 +2,7 @@ import { CiHeart } from "react-icons/ci";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
+import { FaShoppingCart } from "react-icons/fa";
 
 // Define the type for the specs property
 type Specs = {
@@ -12,7 +13,7 @@ type Specs = {
 
 // Define the type for the ProductCard props
 type ProductCardProps = {
-  image: string | StaticImageData;  //A type used when the image is imported directly from a file
+  image: string | StaticImageData; // A type used when the image is imported directly from a file
   name: string;
   type: string;
   specs: Specs;
@@ -33,25 +34,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showFavoriteIcon = true,
 }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition h">
+    <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition">
       {/* Image Section */}
-      <div className="relative ">
-      <h3 className="font-semibold text-lg">{name}</h3>
-      <p className="text-sm text-gray-500">{type}</p>
-        <Image
-          src={image}
-          alt={name}
-          className=" rounded-t-lg"
-        />
+      <div className="relative">
+        <h3 className="font-semibold text-lg">{name}</h3>
+        <p className="text-sm text-gray-500">{type}</p>
+        <Image src={image} alt={name} className="rounded-t-lg" />
         {showFavoriteIcon && (
           <div className="absolute top-2 right-2">
-    <div
-  className={`w-5 h-5 ${
-    isFavorite ? 'text-red-500' : 'text-gray-400'
-  }`}
->
-  <CiHeart />
-</div>
+            <div
+              className={`w-5 h-5 ${
+                isFavorite ? "text-red-500" : "text-gray-400"
+              }`}
+            >
+              <CiHeart />
+            </div>
           </div>
         )}
       </div>
@@ -74,12 +71,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <p className="text-sm text-gray-400 line-through">${oldPrice}</p>
           )}
         </div>
-       <Link href={"/detailcarRent"}><button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">
-          Rent Now
-        </button></Link> 
+        <div className="flex items-center space-x-2">
+          <Link href={"/pages/detailcarRent"}>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">
+              Rent Now
+            </button>
+          </Link>
+          <div className="text-blue-600 text-xl hover:text-blue-700 cursor-pointer">
+              
+          <Link href={"/pages/cart"}><FaShoppingCart size={30} /></Link> 
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default ProductCard;

@@ -40,6 +40,7 @@ const cars = [
       price: 96,
       oldPrice: null,
       isFavorite: true,
+
     },
     {
       image: heroGray ,
@@ -150,7 +151,7 @@ const CarGrid: React.FC = () => {
             
       </div>
       <div className="flex justify-center items-center mt-16 relative mb-10">
-   <Link href={"/categories"}><button className="bg-[#3563E9] hover:bg-blue-700 tracking-widest px-5  p-2 rounded-lg text-white lg:text-lg text-sm">Showmorecar</button></Link> 
+   <Link href={"/pages/categories"}><button className="bg-[#3563E9] hover:bg-blue-700 tracking-widest px-5  p-2 rounded-lg text-white lg:text-lg text-sm">Showmorecar</button></Link> 
     <span className="absolute right-0 text-gray-500 text-lg">120 Car</span>
       </div>
     </div>
