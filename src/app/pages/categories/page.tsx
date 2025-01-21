@@ -17,6 +17,19 @@ interface Car {
   image: string;
 }
 
+type Procedure<T extends unknown[] = unknown[]> = (...args: T) => void;
+
+const debounce = <T extends unknown[]>(
+  func: Procedure<T>,
+  delay: number
+): Procedure<T> => {
+  let timer: ReturnType<typeof setTimeout>;
+  return (...args: T) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func(...args), delay);
+  };
+};
+
 export default function Filters() {
   const [allCars, setAllCars] = useState<Car[]>([]);
   const [filteredCars, setFilteredCars] = useState<Car[]>([]);
@@ -114,18 +127,7 @@ export default function Filters() {
     );
   };
 
-  type Procedure = (...args: any[]) => void;
-
-  const debounce = (func: Procedure, delay: number): Procedure => {
-    let timer: ReturnType<typeof setTimeout>;
-    return (...args: any[]) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => func(...args), delay);
-    };
-  };
-  
-
-  const handlePriceChange = debounce((value: number) => setMaxPrice(value), 300);
+  const handlePriceChange = debounce<[number]>((value) => setMaxPrice(value), 300);
 
   return (
     <div className="flex max-w-8xl bg-gray-100">

@@ -90,7 +90,20 @@ const CarGrid: React.FC = () => {
       {!loading && !error && filteredCars.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredCars.map((car) => (
-            <ProductCard key={car._id} {...car} />
+            <ProductCard
+              key={car._id}
+              {...car}
+              name={car.name || ""}
+              brand={car.brand || ""}
+              type={car.type || ""}
+              fuelCapacity={car.fuelCapacity || ""}
+              transmission={car.transmission || ""}
+              seatingCapacity={car.seatingCapacity || ""}
+              pricePerDay={car.pricePerDay || ""}
+              originalPrice={car.originalPrice || ""}
+              tags={car.tags || []}
+              image={car.image || ""}
+            />
           ))}
         </div>
       )}
@@ -116,4 +129,3 @@ const CarGrid: React.FC = () => {
 }
 
 export default CarGrid
-

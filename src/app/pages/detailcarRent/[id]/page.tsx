@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import { useParams } from "next/navigation"
+import { useParams } from "next/navigation" //to extract the car's dynamic id from the route.
 import { client } from "@/sanity/lib/client"
 import Link from "next/link"
 import { Star } from "lucide-react"
@@ -20,6 +20,7 @@ interface Car {
   originalPrice: string | null
   image: string
   description?: string
+  tags:string[]
 }
 
 const CarDetailPage = () => {
