@@ -1,7 +1,10 @@
+
+import { SearchProvider } from '@/components/contexts/SearchContext';
+import { CartProvider } from '@/components/contexts/CartContext';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 import type { Metadata } from "next";
+import { WishlistProvider } from '@/components/contexts/WishListsContext';
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,10 +16,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <SearchProvider>
+          <CartProvider>
+            <Header />
+            <WishlistProvider>{children}</WishlistProvider>
+            <Footer />
+          </CartProvider>
+        </SearchProvider>
       </body>
     </html>
   );
 }
+

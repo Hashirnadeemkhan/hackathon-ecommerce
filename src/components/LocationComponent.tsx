@@ -20,6 +20,7 @@ export default function PickUpSection() {
                 </svg>
               </button>
             </div>
+         
           </div>
           
           {/* Date */}

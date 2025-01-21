@@ -18,21 +18,21 @@ export function CartSummary({ subtotal, tax, total, onCheckout }: CartSummaryPro
       <CardContent className="space-y-4">
         <div className="flex justify-between">
           <span className="text-gray-600">Subtotal</span>
-          <span>${subtotal}</span>
+          <span>${subtotal.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-600">Tax</span>
-          <span>${tax}</span>
+          <span>${tax.toFixed(2)}</span>
         </div>
         <Separator />
         <div className="flex justify-between font-semibold">
           <span>Total</span>
-          <span>${total}</span>
+          <span>${total.toFixed(2)}</span>
         </div>
       </CardContent>
       <CardFooter>
-        <Button 
-          className="w-full bg-blue-600 hover:bg-blue-700" 
+        <Button
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
           size="lg"
           onClick={onCheckout}
         >
@@ -42,4 +42,3 @@ export function CartSummary({ subtotal, tax, total, onCheckout }: CartSummaryPro
     </Card>
   )
 }
-

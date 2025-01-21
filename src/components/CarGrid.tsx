@@ -1,161 +1,119 @@
-import React from "react";
-import Link from "next/link";
-import heroWhite from "/public/heroWhite.png"
+"use client"
 
-import whiteswift from "/public/whiteswift.png"
-import blackswift from "/public/blackswift.png"
-import blueswift from "/public/blueswift.png"
-import darkblueswift from "/public/darkblueswift.png"
-import brownswift from "/public/brownswift.png"
-import rollsroyce from "/public/rollsroyce.png"
-import greyswift from "/public/greyswift.png"
-import heroGray from "/public/heroGray.png"
-import brightwhite from "/public/brightwhite.png"
-import ProductCard from "@/components/ProductCard"; // Assuming your ProductCard component is in the same directory
-// Car Data Array
-const cars = [
-    {
-      image: heroWhite, // Replace with your actual image URLs
-      name: "Koenigsegg",
-      type: "Sport",
-      specs: { fuel: 90, transmission: "Manual", capacity: 2 },
-      price: 99,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    {
-      image: heroGray ,
-      name: "Nissan GT-R",
-      type: "Sport",
-      specs: { fuel: 80, transmission: "Manual", capacity: 2 },
-      price: 80,
-      oldPrice: 100,
-      isFavorite: false,
-    },
-    {
-      image: rollsroyce,
-      name: "Rolls-Royce",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
+import type React from "react"
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { client } from "@/sanity/lib/client"
+import ProductCard from "./ProductCard"
 
-    },
-    {
-      image: heroGray ,
-      name: "All New Rush",
-      type: "Sport",
-      specs: { fuel: 80, transmission: "Manual", capacity: 2 },
-      price: 80,
-      oldPrice: 100,
-      isFavorite: false,
-    },
-    {
-      image: greyswift ,
-      name: "Nissan GT-R",
-      type: "Sport",
-      specs: { fuel: 80, transmission: "Manual", capacity: 2 },
-      price: 80,
-      oldPrice: 100,
-      isFavorite: false,
-    },
-    {
-      image: brownswift,
-      name: "CR  - V",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    {
-      image: darkblueswift,
-      name: "All New Terios",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    {
-      image: blackswift,
-      name: "CR  - V",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    {
-      image: blueswift,
-      name: "MG ZX Exclusice",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    {
-      image:brightwhite,
-      name: "New MG ZS",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    {
-      image: blueswift,
-      name: "MG ZX Exclusice",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-    
-    {
-      image: whiteswift,
-      name: "New MG ZS",
-      type: "Sedan",
-      specs: { fuel: 70, transmission: "Manual", capacity: 4 },
-      price: 96,
-      oldPrice: null,
-      isFavorite: true,
-    },
-  ];
+import { useSearch } from "./contexts/SearchContext"
+
+interface Car {
+  _id: string
+  name?: string
+  brand?: string
+  type?: string
+  fuelCapacity?: string
+  transmission?: string
+  seatingCapacity?: string
+  pricePerDay?: string
+  originalPrice?: string | null
+  tags?: string[]
+  image?: string
+}
 
 const CarGrid: React.FC = () => {
+  const [cars, setCars] = useState<Car[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  const { searchQuery } = useSearch()
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      setLoading(true)
+      setError(null)
+
+      try {
+        const result = await client.fetch(`*[_type == "cars"]{
+          _id,
+          name,
+          brand,
+          type,
+          fuelCapacity,
+          transmission,
+          seatingCapacity,
+          pricePerDay,
+          originalPrice,
+          tags,
+          "image": image.asset->url
+        }`)
+        setCars(result)
+      } catch (err) {
+        setError("Failed to fetch car data. Please try again later.")
+        console.error("Error fetching cars:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCars()
+  }, [])
+
+  const filteredCars = cars.filter((car) => {
+    const query = searchQuery.toLowerCase()
+    return (
+      car.name?.toLowerCase().includes(query) ||
+      car.brand?.toLowerCase().includes(query) ||
+      car.type?.toLowerCase().includes(query) ||
+      car.tags?.some((tag) => tag.toLowerCase().includes(query)) ||
+      false
+    )
+  })
+
   return (
     <div className="p-4 lg:px-20">
-      <div className="flex justify-between">
-      <h2 className="text-xl font-semibold mb-4">Popular Cars</h2>
-      <h2 className="text-xl font-semibold mb-4 hover:underline">View All</h2>
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl font-semibold">Popular Cars</h2>
+        <Link href="/pages/categories" className="text-[#3563E9] hover:underline">
+          View All
+        </Link>
+      </div>
 
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {cars.map((car, index) => (
-          <ProductCard
-            key={index}
-            image={car.image}
-            name={car.name}
-            type={car.type}
-            specs={car.specs}
-            price={car.price}
-            oldPrice={car.oldPrice}
-            isFavorite={car.isFavorite}
-          />
-        ))}
+      {/* Loading State */}
+      {loading && <p className="text-center text-gray-500">Loading cars...</p>}
 
-            
-      </div>
-      <div className="flex justify-center items-center mt-16 relative mb-10">
-   <Link href={"/pages/categories"}><button className="bg-[#3563E9] hover:bg-blue-700 tracking-widest px-5  p-2 rounded-lg text-white lg:text-lg text-sm">Showmorecar</button></Link> 
-    <span className="absolute right-0 text-gray-500 text-lg">120 Car</span>
-      </div>
+      {/* Error State */}
+      {error && <p className="text-center text-red-500">{error}</p>}
+
+      {/* Cars Grid */}
+      {!loading && !error && filteredCars.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredCars.map((car) => (
+            <ProductCard key={car._id} {...car} />
+          ))}
+        </div>
+      )}
+
+      {/* Empty State */}
+      {!loading && !error && filteredCars.length === 0 && (
+        <p className="text-center text-gray-500">No cars found matching your search.</p>
+      )}
+
+      {/* Footer Section */}
+      {!loading && !error && filteredCars.length > 0 && (
+        <div className="flex justify-center items-center mt-16 relative mb-10">
+          <Link href="/pages/categories">
+            <button className="bg-[#3563E9] hover:bg-blue-700 tracking-widest px-5 py-2 rounded-lg text-white lg:text-lg text-sm transition-colors">
+              Show more cars
+            </button>
+          </Link>
+          <span className="absolute right-0 text-gray-500 text-lg">{filteredCars.length} Cars</span>
+        </div>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default CarGrid;
+export default CarGrid
+

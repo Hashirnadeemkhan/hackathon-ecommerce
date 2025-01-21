@@ -1,19 +1,16 @@
+"use client"
 import React from 'react'
 import Hero from '@/components/Hero'
-import CarGrid from '@/components/CarGrid'
+import dynamic from 'next/dynamic'
 
+const CarGrid = dynamic(() => import('@/components/CarGrid'), { ssr: false })
 
-
-
-const page = () => {
+export default function Home() {
   return (
-    <div>
+    <main>
       <Hero/>
-      <CarGrid/>
-      
-   
-    </div>
+      <CarGrid />
+    </main>
   )
 }
 
-export default page
