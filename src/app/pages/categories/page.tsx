@@ -43,7 +43,7 @@ export default function Filters() {
     const fetchCars = async () => {
       try {
         const result = await client.fetch(
-          `*[_type == "cars"] | order(name asc) [0...10]{
+          `*[_type == "cars"] | order(name asc) [0...20]{
             _id,
             name,
             brand,
@@ -151,7 +151,7 @@ export default function Filters() {
 
         <h2 className="text-lg font-semibold mb-4">Capacity</h2>
         <ul className="mb-6 space-y-5">
-          {["2 People", "4 People", "6 People", "8 or More"].map((capacity) => (
+          {["2 People", "4 People", "6 People", ].map((capacity) => (
             <li key={capacity} className="flex items-center text-lg text-gray-600">
               <input
                 type="checkbox"
