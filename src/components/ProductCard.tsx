@@ -10,7 +10,7 @@ import Link from "next/link"
 import { useCart } from "./contexts/CartContext"
 import { useWishlist } from "./contexts/WishListsContext"
 
-type ProductCardProps = {
+type ProductCardProps = {  //ye prodcutcard ka componennts hain ,jo ha props bhejnay hongay,tu ye uska type save interface ha
   _id: string
   name: string
   brand: string
@@ -36,8 +36,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   originalPrice,
   image,
 }) => {
-  const { addToCart } = useCart()
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist()
+  const { addToCart } = useCart() //Adds the product to the cart. yhaan hum object distrcuting krrhay hain,hamain usecart mae sirf add to cart function chahiye tu bs woh nikalli humney
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist() // Adds,remove,checkisinwishlist the product to the wishlist.
   const isFavorite = isInWishlist(_id)
 
   const handleAddToCart = () => {
@@ -53,10 +53,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   const handleToggleWishlist = () => {
-    if (isFavorite) {
-      removeFromWishlist(_id)
+    if (isFavorite) {   //if wishlist is true means user na hearticon pr click kia va ha or product add ha wihslist mae
+      removeFromWishlist(_id)  //if product is in wishlist tu usko remove krna hoga
     } else {
-      addToWishlist({
+      addToWishlist({  //otherwise add
         _id,
         name,
         brand,
